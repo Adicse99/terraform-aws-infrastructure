@@ -1,3 +1,6 @@
+variable "project_name" {
+  type = string
+}
 variable "cidr" {}
 variable "region" {}
 variable "public_subnet" {

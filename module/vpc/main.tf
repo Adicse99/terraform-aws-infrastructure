@@ -2,8 +2,11 @@ resource "aws_vpc" "Proj_vpc" {
     cidr_block = var.cidr
     region = var.region
 
+    enable_dns_hostnames = true
+    enable_dns_support = true
+    
     tags = {
-        "Name" = "Proj-vpc"
+        "Name" = "${var.project_name}-vpc"
     }
 }
 
@@ -14,7 +17,7 @@ resource "aws_subnet" "Proj_pub_subnet" {
     cidr_block = var.public_subnet[count.index]
 
     tags = {
-      "Name" = "Proj-pub-subnet"
+      "Name" = "${var.project_name}-pub-subnet"
     }
 }
 
@@ -25,6 +28,6 @@ resource "aws_subnet" "Proj_private_subnet" {
     cidr_block = var.private_subnet[count.index]
 
     tags = {
-      "Name" = "Proj-private-subnet"
+      "Name" = "${var.project_name}-private-subnet"
     }
 }
